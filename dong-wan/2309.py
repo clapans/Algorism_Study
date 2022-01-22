@@ -11,3 +11,4 @@ while result !=100 :
 c = sorted(c)
 for i in c:
     print(i)
+print(c)
