@@ -1,5 +1,6 @@
 import sys
 
+sys.setrecursionlimit(10**6)
 node = int(sys.stdin.readline())
 trie = [[] for t in range(node+1)]
 
@@ -9,7 +10,7 @@ for t in range(node-1):
     trie[b].append([a,c])
 
 def dfs(x,val):
-    global res
+    global res,ix
     ch = 0
     for t in trie[x]:
          if visit[t[0]] == 0:
@@ -18,14 +19,20 @@ def dfs(x,val):
             dfs(t[0],val+t[1])
             visit[t[0]] = 0
     if ch == 0:
-        res = max(res,val)
+        if val > res:
+            res = val
+            ix = x
 
-res = 0
+res,ix = 0,0
 for t in range(1,node+1):
     if len(trie[t]) == 1:
         visit = [0] * (node+1)
         visit[t] = 1
         dfs(t,0)
-        trie[t] = []
+        break
+
+visit = [0] * (node+1)
+visit[ix] = 1
+dfs(ix,0)
 
 print(res)
