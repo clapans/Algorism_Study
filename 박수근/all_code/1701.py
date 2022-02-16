@@ -1,8 +1,10 @@
-s = input()
+import sys
+
+s = sys.stdin.readline().rstrip()
 res,cnt = 0,0
 
 while cnt < len(s):
-    j = 0
+    j = cnt
     tmp = s[cnt:]
     arr = [0] * len(tmp)
     for i in range(1,len(tmp)):
