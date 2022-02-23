@@ -12,15 +12,6 @@ dy = [0,0,1,-1]
 t_cnt = 0
 while True:
     visit = [[0]*n for _ in range(m)]
-    queue = deque([[0,0]])
-    while queue:
-        tmp = queue.popleft()
-        visit[tmp[0]][tmp[1]] = 1
-        for t in range(4):
-            nx = tmp[0] + dx[t]
-            ny = tmp[1] + dy[t]
-            if 0 <= nx < m and 0 <= ny < n and visit[nx][ny] == 0 and arr[nx][ny] == 0:
-                queue.append([nx,ny])
     ch = 1
     for i in range(m):
         for j in range(n):
