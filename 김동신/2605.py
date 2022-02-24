@@ -1,8 +1,8 @@
-N=int(input())
-numbers=list(map(int,input().split()))
+N=int(input()) #5
+numbers=list(map(int,input().split())) #0 1 1 3 2
 
 # 학생들 번호 나열
-students = [x for x in range(1,N+1)]
+students = [x for x in range(1,N+1)] #1 2 3 4 5
 
 # 학생들은 뽑은 번호 수만큼 앞에 사람과 자리를 바꾼다
 for idx, number in enumerate(numbers) :
