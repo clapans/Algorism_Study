@@ -12,15 +12,25 @@ dy = [0,0,1,-1]
 t_cnt = 0
 while True:
     visit = [[0]*n for _ in range(m)]
+    visit[0][0] = 1
+    queue = deque([[0,0]])
+    while queue:
+        tmp = queue.popleft()
+        for t in range(4):
+            nx = tmp[0] + dx[t]
+            ny = tmp[1] + dy[t]
+            if 0 <= nx < m and 0 <= ny < n and visit[nx][ny] == 0 and arr[nx][ny] == 0:
+                visit[nx][ny] = 1
+                queue.append([nx,ny])
     ch = 1
     for i in range(m):
         for j in range(n):
             if arr[i][j] == 1 and visit[i][j] == 0:
                 ch = 0
                 queue = deque([[i,j]])
+                visit[i][j] = 1
                 while queue:
                     tmp = queue.popleft()
-                    visit[tmp[0]][tmp[1]] = 1
                     cnt = 0
                     for t in range(4):
                         nx = tmp[0] + dx[t]
@@ -29,6 +39,7 @@ while True:
                             if visit[nx][ny] == 1 and arr[nx][ny] == 0:
                                 cnt += 1
                             if visit[nx][ny] == 0 and arr[nx][ny] == 1:
+                                visit[nx][ny] = 1
                                 queue.append([nx,ny])
                     if cnt > 1:
                         arr[tmp[0]][tmp[1]] = -1
