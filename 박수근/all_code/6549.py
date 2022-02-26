@@ -24,6 +24,11 @@ while True:
     res = 0
     tree(1,height[0],1)
     for i in range(1,height[0]+1):
+        if res > height[i] * (height[0]-i+1):
+            continue
         for j in range(i,height[0]+1):
-            res = max(res,get(1,height[0],i,j,1) * (j-i+1))
+            tmp = get(1,height[0],i,j,1)
+            if res > (height[0]-i+1) * tmp:
+                break 
+            res = max(res,tmp * (j-i+1))
     print(res)
