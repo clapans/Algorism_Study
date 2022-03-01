@@ -1,5 +1,3 @@
-import copy
-
 dx = [-1,1,0,0]
 dy = [0,0,1,-1]
 
@@ -11,7 +9,7 @@ def dfs(v,cur_arr,r_cnt,l_cnt):
         elif r_cnt == res[0]:
             res = [r_cnt,min(res[1],l_cnt)]
     else:
-        arr_save = copy.deepcopy(cur_arr)
+        arr_save = [t[:] for t in cur_arr]
         x,y = cores[v]
         ch = 1
         for t in range(4):
@@ -27,9 +25,8 @@ def dfs(v,cur_arr,r_cnt,l_cnt):
             if nx == -1 or ny == -1 or nx == n or ny == n:
                 ch = 0
                 dfs(v+1,cur_arr,r_cnt+1,l_cnt+cnt-1)
-            cur_arr = copy.deepcopy(arr_save)
-        if ch:
-            dfs(v+1,cur_arr,r_cnt,l_cnt)
+            cur_arr = [t[:] for t in arr_save]
+        dfs(v+1,cur_arr,r_cnt,l_cnt)
 
 for case in range(int(input())):
     n = int(input())
