@@ -11,7 +11,6 @@ def dfs(v,cur_arr,r_cnt,l_cnt):
     else:
         arr_save = [t[:] for t in cur_arr]
         x,y = cores[v]
-        ch = 1
         for t in range(4):
             cnt = 1
             while True:
@@ -23,7 +22,6 @@ def dfs(v,cur_arr,r_cnt,l_cnt):
                     break
                 cnt += 1
             if nx == -1 or ny == -1 or nx == n or ny == n:
-                ch = 0
                 dfs(v+1,cur_arr,r_cnt+1,l_cnt+cnt-1)
             cur_arr = [t[:] for t in arr_save]
         dfs(v+1,cur_arr,r_cnt,l_cnt)
