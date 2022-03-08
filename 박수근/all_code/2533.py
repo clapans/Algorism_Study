@@ -20,5 +20,5 @@ for t in range(nodes-1):
     edges[a].append(b)
 
 dp = [-1 for _ in range(nodes+1)]
-dfs(1)
+dfs(2)
 print(sum([t for t in dp[1:] if t != -1]))
