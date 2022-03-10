@@ -1,39 +1,37 @@
-dx = [1,1]
-dy = [1,-1]
-r_dx = [-1,-1]
-r_dy = [-1,1]
-
-def dfs(x,y,val,dir,rotate):
+dx = [1,1,-1,-1]
+dy = [1,-1,-1,1]
+ 
+def dfs(x,y,val,dir):
     global res
-    for t in range(2):
-        if rotate == 0 or t == 1:
+    if x == sx and y == sy and val:
+        res = max(res,len(val))
+    else:
+        try:
+            if dir[-1] < 3:
+                case = [dir[-1],dir[-1]+1]
+            else:
+                case = [dir[-1]]
+        except:
+            case = [0]
+        for t in case:
             nx = x + dx[t]
             ny = y + dy[t]
             if 0 <= nx < n and 0 <= ny < n and arr[nx][ny] not in val:
                 val.append(arr[nx][ny])
                 dir.append(t)
-                dfs(nx,ny,val,dir,max(rotate,t))
+                dfs(nx,ny,val,dir)
                 dir.pop()
                 val.pop()
-    if 0 in dir and 1 in dir:
-        for t in dir:
-            x += r_dx[t]
-            y += r_dy[t]
-            if 0 <= x < n and 0 <= y < n and arr[x][y] not in val:
-                val.append(arr[x][y])
-            else:
-                return 0
-        res = max(res,len(val))
-        
+ 
 for case in range(int(input())):
     n = int(input())
     arr = []
     for _ in range(n):
         arr.append(list(map(int,input().split())))
-    
+     
     res = -1
     for i in range(n):
         for j in range(n):
             sx,sy = i,j
-            dfs(i,j,[],[],0)
-    print(f'#{case+1} {res}')    
+            dfs(i,j,[],[])
+    print(f'#{case+1} {res}')
