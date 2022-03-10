@@ -6,21 +6,16 @@ def dfs(x,y,val,dir):
     if x == sx and y == sy and val:
         res = max(res,len(val))
     else:
-        try:
-            if dir[-1] < 3:
-                case = [dir[-1],dir[-1]+1]
-            else:
-                case = [dir[-1]]
-        except:
-            case = [0]
+        if val and dir < 3:
+            case = [dir,dir+1]
+        else:
+            case = [dir]
         for t in case:
             nx = x + dx[t]
             ny = y + dy[t]
             if 0 <= nx < n and 0 <= ny < n and arr[nx][ny] not in val:
                 val.append(arr[nx][ny])
-                dir.append(t)
-                dfs(nx,ny,val,dir)
-                dir.pop()
+                dfs(nx,ny,val,t)
                 val.pop()
  
 for case in range(int(input())):
@@ -33,5 +28,5 @@ for case in range(int(input())):
     for i in range(n):
         for j in range(n):
             sx,sy = i,j
-            dfs(i,j,[],[])
+            dfs(i,j,[],0)
     print(f'#{case+1} {res}')
