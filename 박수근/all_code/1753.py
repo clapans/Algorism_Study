@@ -9,7 +9,7 @@ def dijkstra():
         tmp = heapq.heappop(q)
         if distance[tmp[1]] < tmp[0]:
             continue
-        for t in graph(tmp[1]):
+        for t in graph[tmp[1]]:
             cost = tmp[0] + t[1]
             if cost < distance[t[0]]:
                 distance[t[0]] = cost
@@ -22,3 +22,10 @@ for _ in range(e):
     a,b,c, = map(int,sys.stdin.readline().split())
     graph[a].append([b,c])
 distance = [int(1e9)] * (v+1)
+dijkstra()
+
+for t in distance[1:]:
+    if t == int(1e9):
+        print('INF')
+    else:
+        print(t)
