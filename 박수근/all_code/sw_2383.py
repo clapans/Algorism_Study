@@ -18,7 +18,7 @@ def lunch(x,time):
             tmp = max(tmp,len(time[i]))
         res = min(res,tmp)
     else:
-        time_save = copy.deepcopy(time)
+        time_save = [[v[:] for v in t] for t in time]
         for t in range(len(stair)):
             k = arr[stair[t][0]][stair[t][1]]
             r = abs(person[x][0] - stair[t][0])
@@ -26,9 +26,9 @@ def lunch(x,time):
             while len(time[t]) < r+c+int(k)+1:
                 time[t].append([])
             for i in range(r+c+1,r+c+int(k)+1):
-                heapq.heappush(time[t][i],(-(r+c),person[x]))
+                heapq.heappush(time[t][i],(-(r+c)))
             lunch(x+1,time)
-            time = copy.deepcopy(time_save)
+            time = [[v[:] for v in t] for t in time_save]
 
 for case in range(int(input())):
     n = int(input())
