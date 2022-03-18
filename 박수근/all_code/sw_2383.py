@@ -1,5 +1,4 @@
 import heapq
-import copy
 
 def lunch(x,time):
     global res
