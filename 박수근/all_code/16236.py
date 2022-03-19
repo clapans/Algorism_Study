@@ -22,10 +22,11 @@ dy = [0,-1,1,0]
 
 eat = []
 res = 0
-tcnt = 0
+
 while True:
     queue = deque([[*start,0]])
     visit = [[0]*n for _ in range(n)]
+    visit[start[0]][start[1]] = 1
     ch = 1
     while queue:
         x,y,cnt = queue.popleft()
@@ -35,7 +36,6 @@ while True:
             if 0 <= nx < n and 0 <= ny < n and visit[nx][ny] == 0 and arr[nx][ny] <= arr[start[0]][start[1]]:
                 if [nx,ny] in fishes and arr[nx][ny] < arr[start[0]][start[1]]:
                     eat.append([nx,ny])
-            
                     arr[nx][ny] = arr[start[0]][start[1]]
                     arr[start[0]][start[1]] = 0
                     start = [nx,ny]
@@ -49,7 +49,5 @@ while True:
     if len(eat) == arr[start[0]][start[1]]:
         arr[start[0]][start[1]] += 1
         eat = [] 
-    tcnt += 1
 
-pprint(arr)
 print(res)
