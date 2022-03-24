@@ -26,7 +26,7 @@ for case in range(int(input())):
     n,l = map(int,input().split())
     arr = []
     for _ in range(n):
-        arr.append(list(map(int,sys.stdin.readline().split())))
+        arr.append(list(map(int,input().split())))
 
     res = 0
 
@@ -38,4 +38,4 @@ for case in range(int(input())):
         if slope(list(t)):
             res += 1
 
-    print(res)
+    print(f'#{case+1} {res}')
