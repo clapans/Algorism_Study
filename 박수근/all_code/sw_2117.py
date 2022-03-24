@@ -24,8 +24,7 @@ def mareummo(lst):
         lst = tmp[:]
         if sum_ * m >= cnt**2 + (cnt-1)**2:
             res = max(res,sum_)
-        cnt += 1
-        
+        cnt += 1       
     return res
 
 for case in range(int(input())):
