@@ -14,9 +14,9 @@ for case in range(int(input())):
             ny = t[1] + 0.5*dy[t[2]]
             if -1000 <= nx <= 1000 and -1000 <= ny <= 1000:
                 try:
-                    tmp[(nx,ny)].append(t)
+                    tmp[(nx,ny)].append([nx,ny] + t[2:])
                 except:
-                    tmp[(nx,ny)] = [t]
+                    tmp[(nx,ny)] = [[nx,ny] + t[2:]]
 
         new = []
         for k,v in tmp.items():
