@@ -32,3 +32,4 @@ for _ in range(n):
 home,away = [],[]
 dfs(0)
 print(res)
+print(home,away)
