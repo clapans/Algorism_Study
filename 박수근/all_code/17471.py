@@ -19,9 +19,9 @@ def bfs(red,blue):
         tmp = queue.popleft()
         visit[tmp] = 1
         for i in arr[tmp]:
-            if visit[i] == 0 and i in red:
+            if visit[i] == 0 and i in blue:
                 queue.append(i)
-    for i in red:
+    for i in blue:
         if visit[i] == 0:
             return int(1e9)
     red_sum = 0
