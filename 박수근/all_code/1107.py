@@ -11,17 +11,26 @@ def isCheck(num):
 
 def closest(num):
     cnt = 0
-    while True:
-        if minus and isCheck(num+cnt):
-            return cnt + len(str(num+cnt))
-        if plus and isCheck(num-cnt): 
-            return cnt + len(str(num-cnt))
+    tmp = [int(1e9),int(1e9)]
+    while minus:
+        if isCheck(num+cnt):
+            tmp[0] = cnt + len(str(num+cnt))
+            break
         cnt += 1
+    cnt = 0
+    while plus:
+        if num-cnt < 0:
+            break
+        if isCheck(num-cnt): 
+            tmp[1] = cnt + len(str(num-cnt))
+            break
+        cnt += 1
+    return min(tmp)
 
 def isNum():
     cnt = 0
     for t in broke:
-        if t != "+" or t != "-":
+        if t != "+" and t != "-":
             cnt += 1
     return cnt
 
@@ -35,12 +44,12 @@ if m > 0:
         minus = False
 
 distance = int(1e9)
-if plus and n <= 100:
+if minus and n <= 100:
     distance = min(distance,100-n)
-if minus and n >= 100:
+if plus and n >= 100:
     distance = min(distance,n-100)
-    
+
 if isNum() == 10:
-    print(abs(n-100))
+    print(distance)
 else:
-    print(min(abs(n-100),closest(n)))
+    print(min(distance,closest(n)))
