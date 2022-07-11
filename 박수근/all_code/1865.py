@@ -1,10 +1,10 @@
 import sys
 
 def distance():
-    for mid in range(1,n+1):
+    for middle in range(1,n+1):
         for i in range(1,n+1):
             for j in range(1,n+1):
-                dp[i][j] = min(dp[i][j],dp[i][mid] + dp[mid][j])
+                dp[i][j] = min(dp[i][j],dp[i][middle] + dp[middle][j])
                 if i == j and dp[i][j] < 0:
                     return "YES"
     return "NO"
