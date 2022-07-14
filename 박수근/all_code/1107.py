@@ -11,21 +11,12 @@ def isCheck(num):
 
 def closest(num):
     cnt = 0
-    tmp = [int(1e9),int(1e9)]
-    while minus:
-        if isCheck(num+cnt):
-            tmp[0] = cnt + len(str(num+cnt))
-            break
+    while True:
+        if minus and isCheck(num+cnt):
+            return cnt + len(str(num+cnt))
+        if plus and isCheck(num-cnt): 
+            return cnt + len(str(num-cnt))
         cnt += 1
-    cnt = 0
-    while plus:
-        if num-cnt < 0:
-            break
-        if isCheck(num-cnt): 
-            tmp[1] = cnt + len(str(num-cnt))
-            break
-        cnt += 1
-    return min(tmp)
 
 def isNum():
     cnt = 0
