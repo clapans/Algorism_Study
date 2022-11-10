@@ -28,4 +28,3 @@ for i in range(m):
     union(a, b, i + 1)
 
 print(res)
-
